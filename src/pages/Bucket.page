@@ -1,0 +1,72 @@
+<!--
+ - Created by Admin on 3/29/2018.
+ -->
+
+<apex:page id="Bucket" controller="BucketPageController"
+           showHeader="false" sideBar="false" docType="html-5.0" action="{!init}">
+    <script>
+        function refreshTotalCost() {
+            refresh();
+        }
+    </script>
+
+    <style>
+        body{
+            background: url("{!URLFOR($Resource.ShopImages, 'shopImages/background.jpg')}");
+        }
+
+        .selected{
+            margin-left: 5px;
+            color: green;
+            font-size: 18px;
+        }
+
+        .bucket{
+            padding: 50px;
+        }
+    </style>
+
+    <div class="bucket">
+        <apex:form >
+            <apex:commandButton value="{!$Label.Home}" action="/apex/Home"/>
+        </apex:form>
+        <apex:form rendered="{!!success}">
+            <apex:actionFunction name="refresh" action="{!refreshPrices}" reRender="costs, quants, available, totalPrice"/>
+            <apex:actionFunction name="del" action="{!delFromBucket}" reRender="products, totalPrice">
+                <apex:param value="" name="prodID"/>
+            </apex:actionFunction>
+            <apex:pageBlock id="products">
+                <apex:outputText value="{!$Label.TryAgain}" rendered="{!tryAgain}"/>
+                <apex:pageBlockTable value="{!productOrders}" var="product">
+                    <apex:column >
+                        <apex:image value="{!product.Shop_Product__r.Image_Path__c}" height="100px" width="150px"/>
+                    </apex:column>
+                    <apex:column value="{!product.Shop_Product__r.Name}"/>
+                    <apex:column value="{!product.Shop_Product__r.Price__c}"/>
+                    <apex:column headerValue="{!$Label.Quantity}" id="quants">
+                        <apex:inputField type="number" value="{!product.Quantity__c}" onChange="refreshTotalCost()" style="width: 30px"/>
+                    </apex:column>
+                    <apex:column id="available" headerValue="{!$Label.Available}" value="{!product.Shop_Product__r.Quantity__c}"/>
+                    <apex:column id="costs" value="{!product.Sum__c}"/>
+                    <apex:column >
+                        <apex:commandButton value="remove" onClick="del('{!product.Id}'); return false"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+                <apex:outputText value="{!totalPrice}" id="totalPrice"/>
+            </apex:pageBlock>
+        </apex:form>
+        <apex:form rendered="{!!success}">
+            <apex:pageBlock >
+                <apex:pageBlockSection >
+                    <apex:inputField value="{!shopOrder.Buyer__r.FirstName}" required="true"/>
+                    <apex:inputField value="{!shopOrder.Buyer__r.LastName}" required="true"/>
+                    <apex:inputField value="{!shopOrder.Buyer__r.MobilePhone}" required="true"/>
+                    <apex:inputField value="{!shopOrder.Buyer__r.MailingCity}" required="true"/>
+                    <apex:inputField value="{!shopOrder.Buyer__r.MailingStreet}" required="true"/>
+                    <apex:commandButton value="{!$Label.Submit}" action="{!submit}"/>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:form>
+        <apex:outputText value="{!$Label.success}" rendered="{!success}"/>
+    </div>
+</apex:page>

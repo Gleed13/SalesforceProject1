@@ -1,0 +1,66 @@
+<!--
+ - Created by Danil on 29.03.2018.
+ -->
+
+<apex:page id="Product" sideBar="false" showHeader="false"
+           standardController="Shop_Product__c" extensions="ProductPageControllerExtension" action="{!initOrder}">
+
+    <style>
+        body{
+            background: url("{!URLFOR($Resource.ShopImages, 'shopImages/background.jpg')}");
+        }
+        .selected{
+            margin-left: 5px;
+            color: green;
+            font-size: 18px;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .topElements {
+            display:inline-block
+        }
+
+        .topElements.bucket{
+            position: relative;
+            float: right;
+        }
+
+        .page {
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 20px;
+        }
+
+    </style>
+
+    <div class="page">
+        <apex:form >
+            <div class="header">
+                <div class="topElements">
+                    <apex:commandButton value="{!$Label.Home}" action="/apex/Home"/>
+                </div>
+                <div class="topElements bucket">
+                    <a href="/apex/Bucket">
+                        <apex:image value="{!URLFOR($Resource.ShopImages, 'shopImages/bucket.jpg')}" width="50" height="50"/>
+                        <span class="selected">{!numOfSelected}</span>
+                    </a>
+                </div>
+            </div>
+            <apex:pageBlock >
+                <apex:pageBlockSection columns="1">
+                    <apex:outputField value="{!Shop_Product__c.Image__c}"/>
+                    <apex:commandButton value="{!$Label.AddToBucket}" action="{!addToBucket}"/>
+                    <apex:outputField value="{!Shop_Product__c.Name}"/>
+                    <apex:outputField value="{!Shop_Product__c.Code__c}"/>
+                    <apex:outputField value="{!Shop_Product__c.Brand__c}"/>
+                    <apex:outputField value="{!Shop_Product__c.Description__c}"/>
+                    <apex:outputField value="{!Shop_Product__c.Quantity__c}"/>
+                    <apex:outputField value="{!Shop_Product__c.Price__c}"/>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:form>
+    </div>
+</apex:page>

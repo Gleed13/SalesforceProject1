@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Shop Product Order</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Shop Product Orders</value>
+    </caseValues>
+    <fields>
+        <label><!-- Cost --></label>
+        <name>Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantity --></label>
+        <name>Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shop Order --></label>
+        <name>Shop_Order__c</name>
+        <relationshipLabel><!-- Shop Product Orders --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Shop Product --></label>
+        <name>Shop_Product__c</name>
+        <relationshipLabel><!-- Shop Product Orders --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sum --></label>
+        <name>Sum__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Cost --></label>
+        <name>Total_Cost__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

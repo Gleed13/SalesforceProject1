@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AddToBucket</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AddToBucket</shortDescription>
+        <value>Add To Bucket</value>
+    </labels>
+    <labels>
+        <fullName>Add_to_cart</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Add to cart</shortDescription>
+        <value>Add to cart</value>
+    </labels>
+    <labels>
+        <fullName>Available</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Available</shortDescription>
+        <value>Available</value>
+    </labels>
+    <labels>
+        <fullName>Home</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Home</shortDescription>
+        <value>Home</value>
+    </labels>
+    <labels>
+        <fullName>Product</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Product</shortDescription>
+        <value>Product</value>
+    </labels>
+    <labels>
+        <fullName>Quantity</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Quantity</shortDescription>
+        <value>Quantity</value>
+    </labels>
+    <labels>
+        <fullName>Submit</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Submit</shortDescription>
+        <value>Submit</value>
+    </labels>
+    <labels>
+        <fullName>TryAgain</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TryAgain</shortDescription>
+        <value>Looks like something changed. Try again please.</value>
+    </labels>
+    <labels>
+        <fullName>success</fullName>
+        <categories>if order submited</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>success</shortDescription>
+        <value>Success. Wait for manager&apos;s call.</value>
+    </labels>
+</CustomLabels>

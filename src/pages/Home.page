@@ -1,0 +1,105 @@
+<apex:page id="Home" sideBar="false" showHeader="false" controller="HomePageController" action="{!init}">
+    <script>
+        function refreshList() {
+            RefreshList();
+        }
+    </script>
+
+    <style>
+        body{
+            background: url("{!URLFOR($Resource.ShopImages, 'shopImages/background.jpg')}");
+        }
+
+        .page {
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 20px;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+        .topElements {
+            display:inline-block
+        }
+
+        .topElements.bucket{
+            position: relative;
+            float: right;
+        }
+
+        .selected{
+            margin-left: 5px;
+            color: green;
+            font-size: 18px;
+
+        }
+    </style>
+
+    <apex:form >
+
+            <div class="page">
+                <div class="header">
+                    <div class="topElements">
+                        <!--<apex:inputField value="{!shopProduct.Type__c}" onChange="refreshList(); return false;"/>-->
+                        <apex:inputField value="{!shopOrder.Selected_Type__c}" onChange="refreshList(); return false;"/>
+                    </div>
+                    <div class="topElements bucket">
+                        <a href="/apex/Bucket">
+                            <apex:image value="{!URLFOR($Resource.ShopImages, 'shopImages/bucket.jpg')}" width="50" height="50" title="{!numOfSelected}"/>
+                            <span class="selected">{!numOfSelected}</span>
+                        </a>
+                    </div>
+                </div>
+
+                <apex:pageBlock id="pageBlock">
+                    <apex:pageBlockTable value="{!listShopProducts}" var="listElement">
+                            <apex:column value="{!listElement.Image__c}" style="padding: 32px"/>
+                            <apex:column headerValue="{!$Label.Product}">
+                                <apex:outputLink value="/apex/Product?id={!listElement.Id}">{!listElement.Name}</apex:outputLink>
+                            </apex:column>
+                            <apex:column value="{!listElement.Brand__c}"/>
+                            <apex:column value="{!listElement.Description__c}"/>
+                            <apex:column value="{!listElement.Price__c}"/>
+                            <apex:column value="{!listElement.Quantity__c}"/>
+                    </apex:pageBlockTable>
+                    <!-- Pagination -->
+                    <table style="width: 100%">
+                        <tr>
+                            <td>
+                                Page: <apex:outputText value=" {!pageNumber} of {! CEILING(resultSize / pageSize) }"/>
+                            </td>
+                            <td align="center">
+                                <!-- Previous page -->
+                                <!-- active -->
+                                <apex:commandLink action="{! previous }" value="« Previous"
+                                                  rendered="{! hasPrevious }"/>
+                                <!-- inactive (no earlier pages) -->
+                                <apex:outputText style="color: #ccc;" value="« Previous"
+                                                 rendered="{! NOT(hasPrevious) }"/>
+                                &nbsp;&nbsp;
+                                <!-- Next page -->
+                                <!-- active -->
+                                <apex:commandLink action="{! next }" value="Next »"
+                                                  rendered="{! hasNext }"/>
+                                <!-- inactive (no more pages) -->
+                                <apex:outputText style="color: #ccc;" value="Next »"
+                                                 rendered="{! NOT(hasNext) }"/>
+                            </td>
+
+                            <td align="right">
+                                Records per page:
+                                <apex:selectList value="{! pageSize }" size="1" onChange="refreshList(); return false;">
+                                    <apex:selectOption itemValue="5" itemLabel="5"/>
+                                    <apex:selectOption itemValue="20" itemLabel="20"/>
+                                    <apex:actionSupport event="onchange" reRender="pageBlock"/>
+                                </apex:selectList>
+                            </td>
+                        </tr>
+                    </table>
+                </apex:pageBlock>
+            </div>
+        <apex:actionFunction name="RefreshList" action="{!refreshList}" reRender="pageBlock"/>
+
+    </apex:form>
+</apex:page>

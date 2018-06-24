@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Shop Order</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Shop Orders</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activate Date --></label>
+        <name>Activate_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Buyer --></label>
+        <name>Buyer__c</name>
+        <relationshipLabel><!-- Shop Buyers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Close Date --></label>
+        <name>Close_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Selected Type --></label>
+        <name>Selected_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total Selected --></label>
+        <name>Total_Selected__c</name>
+    </fields>
+    <layouts>
+        <layout>Shop Order Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>
